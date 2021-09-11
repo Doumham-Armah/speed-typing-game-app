@@ -3,6 +3,14 @@ import { useState } from "react";
 
 const Game = () => {
   const [text, setText] = useState("");
+
+  const wordCount = (text) => {
+    const count = text
+      .trim() //trim away spaces at beginning & end of sentence
+      .split(" ")
+      .filter((word) => word !== "").length; //filter out any spaces in resulting array
+    console.log(`count: ${count}`);
+  };
   console.log(text);
   return (
     <div>
@@ -13,7 +21,13 @@ const Game = () => {
         }}
       />
       <h4>Time reminaing: ???</h4>
-      <button>Start</button>
+      <button
+        onClick={() => {
+          wordCount(text);
+        }}
+      >
+        Start
+      </button>
       <h1>Word count: ???</h1>
     </div>
   );
